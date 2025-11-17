@@ -1,0 +1,505 @@
+/* ========== Global ========== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  background: #111827;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+  color: #111827;
+}
+
+/* ========== App shell / phone frame ========== */
+.app-shell {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.phone-frame {
+  width: 390px;
+  min-height: 780px;
+  background: #fafafa;
+  border-radius: 28px;
+  box-shadow:
+    0 22px 50px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(148, 163, 184, 0.2);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== Header ========== */
+.app-header {
+  padding: 12px 18px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.app-logo {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #020617;
+}
+
+.app-logo span {
+  color: #3a7bff;
+}
+
+.app-header-meta {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* back button */
+.back-btn {
+  background: none;
+  border: none;
+  color: #3a7bff;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 4px 2px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  color: #1e40ff;
+}
+
+/* ========== Main content ========== */
+.app-main {
+  flex: 1;
+  padding: 8px 14px 72px; /* bottom space for nav */
+  overflow-y: auto;
+}
+
+.screen {
+  width: 100%;
+  animation: fade-in 0.16s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== Card ========== */
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px 18px 26px; /* more bottom padding */
+  border: 1px solid rgba(209, 213, 219, 0.7);
+}
+
+/* welcome card logo alignment */
+.welcome-card {
+  text-align: center;
+}
+
+.welcome-logo {
+  display: flex;
+  justify-content: center;
+  margin: 22px 0 14px;
+}
+
+.welcome-logo-img {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;          /* soft corners */
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.25);
+}
+
+.welcome-logo-box {
+  width: 100px;
+  height: 100px;
+  background: #e5e7eb;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6b7280;
+  font-size: 13px;
+  border: 1px solid #d1d5db;
+}
+
+/* action area at bottom of card */
+.card-actions {
+  margin-top: 18px;
+}
+
+/* ========== Typography ========== */
+.screen-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-bottom: 4px;
+}
+
+.screen-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.45;
+  margin-bottom: 16px;
+}
+
+/* ========== Buttons ========== */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 11px 16px;
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    transform 0.08s ease,
+    box-shadow 0.12s ease;
+}
+
+/* spacing between stacked buttons */
+.btn + .btn {
+  margin-top: 8px;
+}
+
+.btn-primary {
+  background: #3a7bff;
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(58, 123, 255, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(58, 123, 255, 0.45);
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+}
+
+.btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #6b7280;
+}
+
+.btn-ghost:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+/* ========== Divider ========== */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 14px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* ========== Fields / inputs ========== */
+.field {
+  margin-bottom: 12px;
+}
+
+.field-label {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.field-helper {
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.field-input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 9px 11px;
+  font-size: 13px;
+  outline: none;
+}
+
+.field-input:focus {
+  border-color: #3a7bff;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgba(58, 123, 255, 0.25);
+}
+
+/* ========== QR area ========== */
+.qr-box {
+  background: #e1e7ff;
+  border-radius: 14px;
+  border: 1px dashed rgba(58, 123, 255, 0.8);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.qr-grid {
+  width: 88px;
+  height: 88px;
+  background: #eff2ff;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 4px;
+  padding: 4px;
+}
+
+.qr-cell {
+  background: #1d4ed8;
+  border-radius: 4px;
+}
+
+.hint {
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+/* ========== Pill (est. wait) ========== */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: #f3f4f6;
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #10b981;
+}
+
+/* ========== Queue text ========== */
+.queue-number {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.queue-subtext {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.queue-auto {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 3px;
+}
+
+/* ========== Meta rows (label/value pairs) ========== */
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.meta-row--spaced {
+  margin-top: 14px;
+}
+
+.meta-value {
+  font-weight: 500;
+}
+
+/* ========== Notify card ========== */
+.notify-card {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #eef2ff;
+  font-size: 12px;
+  color: #1e3a8a;
+}
+
+/* ========== Bottom nav ========== */
+.bottom-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid rgba(209, 213, 219, 0.85);
+  background: rgba(250, 250, 250, 0.96);
+  backdrop-filter: blur(8px);
+  padding: 6px 16px 10px;
+}
+
+.bottom-nav-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.nav-item {
+  flex: 1;
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.nav-item--active {
+  color: #3a7bff;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* simple icon shapes */
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid currentColor;
+  position: relative;
+}
+
+/* home: little house */
+.nav-icon--home::before {
+  content: "";
+  position: absolute;
+  inset: 4px 4px 2px 4px;
+  border-radius: 3px;
+  border: 2px solid currentColor;
+  border-top: none;
+}
+
+.nav-icon--home::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 3px;
+  border-left: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  height: 6px;
+  transform: skewY(-20deg);
+}
+
+/* queue: stacked lines */
+.nav-icon--queue::before,
+.nav-icon--queue::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.nav-icon--queue::before {
+  top: 5px;
+}
+
+.nav-icon--queue::after {
+  bottom: 5px;
+}
+
+/* details: user-circle icon */
+.nav-icon--details {
+  border-radius: 999px;
+}
+
+.nav-icon--details::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  right: 5px;
+  height: 6px;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+}
+
+.nav-icon--details::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 3px;
+  height: 5px;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+  border-top: none;
+}
+
+/* ========== Toast ========== */
+.toast {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 70px;
+  background: #fef2f2;
+  border-radius: 10px;
+  padding: 9px 11px;
+  font-size: 11px;
+  color: #7f1d1d;
+  border: 1px solid #fecaca;
+}
