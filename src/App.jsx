@@ -12,6 +12,8 @@ import TableReadyScreen from "./screens/TableReadyScreen";
 import HostNotifiedScreen from "./screens/HostNotifiedScreen";
 import ProofForHostScreen from "./screens/ProofForHostScreen";
 import DoneScreen from "./screens/DoneScreen";
+import ExploreOptionsScreen from "./screens/ExploreOptionsScreen";
+
 
 export const SCREENS = {
   WELCOME: "WELCOME",
@@ -24,6 +26,7 @@ export const SCREENS = {
   HOST_NOTIFIED: "HOST_NOTIFIED",
   PROOF_FOR_HOST: "PROOF_FOR_HOST",
   DONE: "DONE",
+   OPTIONS: "OPTIONS",
 };
 
 export default function App() {
@@ -128,6 +131,7 @@ export default function App() {
           partySize={partySize}
           carInfo={carInfo}
           onConfirm={() => goTo(SCREENS.LIVE_QUEUE)}
+          onCancel={() => goTo(SCREENS.OPTIONS)} 
         />
       );
       break;
@@ -136,7 +140,8 @@ export default function App() {
     case SCREENS.LIVE_QUEUE:
       ScreenComponent = (
         <LiveQueueScreen
-          onEnableNotifications={() => goTo(SCREENS.NOTIFY)}
+          onNotify={() => goTo(SCREENS.NOTIFY)}
+        onSkip={() => goTo(SCREENS.NOTIFY)}  
         />
       );
       break;
@@ -146,7 +151,7 @@ export default function App() {
       ScreenComponent = (
         <NotifyScreen
           onAllow={() => goTo(SCREENS.TABLE_READY)}
-          onSkip={() => goTo(SCREENS.LIVE_QUEUE)}
+          onSkip={() => goTo(SCREENS.TABLE_READY)}
         />
       );
       break;
@@ -194,6 +199,12 @@ export default function App() {
 
     default:
       ScreenComponent = null;
+    
+      case SCREENS.OPTIONS:
+  ScreenComponent = (
+    <ExploreOptionsScreen onBackToStart={() => goTo(SCREENS.WELCOME)} />
+  );
+  break;
   }
 
   return (

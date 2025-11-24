@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function LiveQueueScreen({ onEnableNotifications }) {
+export default function LiveQueueScreen({ onNotify, onSkip }) {
   return (
     <section className="screen">
       <div className="card">
@@ -9,6 +9,7 @@ export default function LiveQueueScreen({ onEnableNotifications }) {
           Track your place in line in real time.
         </p>
 
+        {/* Position + wait info */}
         <p className="field-label">Your position</p>
         <p className="queue-number">12</p>
         <p className="queue-subtext">in line</p>
@@ -19,25 +20,52 @@ export default function LiveQueueScreen({ onEnableNotifications }) {
           <span className="meta-value">20–25 minutes</span>
         </div>
 
-        <div className="notify-card">
-          Stay updated with notifications. Receive an alert when your table is
-          ready so you don’t need to keep checking the screen.
+        {/* Notification concept block */}
+        <div className="notify-card" style={{ marginTop: 16 }}>
+          <p>
+            Stay updated with notifications. Receive an alert when your table
+            is ready so you don&apos;t need to keep checking the screen.
+          </p>
         </div>
 
-        <button
-          className="btn btn-primary"
-          type="button"
-          onClick={onEnableNotifications}
-        >
-          Enable notifications
-        </button>
+        <div className="card-actions">
+          <button
+            className="btn btn-primary"
+            type="button"
+            onClick={onNotify}
+          >
+            Enable notifications
+          </button>
 
-        <button
-          className="btn btn-ghost"
-          type="button"
-        >
-          Skip for now
-        </button>
+          <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={onSkip}
+          >
+            Skip for now
+          </button>
+        </div>
+
+        {/* While you wait / better options */}
+        <div className="option-section" style={{ marginTop: 20 }}>
+          <p className="field-label">While you wait</p>
+
+          <div className="option-card">
+            <div>
+              <p className="option-title">Corner Roasters</p>
+              <p className="option-subtitle">Grab a coffee · across the street</p>
+            </div>
+          </div>
+
+          <div className="option-card">
+            <div>
+              <p className="option-title">Poke &amp; Grill</p>
+              <p className="option-subtitle">
+                4.7 ★ · casual · 3 min walk · shorter wait
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

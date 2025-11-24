@@ -9,58 +9,69 @@ export default function FormScreen({
   setCarInfo,
   onSubmit,
 }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
+  };
+
   return (
     <section className="screen">
       <div className="card">
-        <h1 className="screen-title">Check-in details</h1>
+        <h1 className="screen-title">Guest details</h1>
         <p className="screen-subtitle">
-          Provide your details so the host can confirm your party.
+          Tell the host who you are so they can find you when it&apos;s your
+          turn.
         </p>
 
-        <div className="field">
-          <label className="field-label" htmlFor="name">
-            Your name
-          </label>
-          <input
-            id="name"
-            className="field-input"
-            placeholder="Enter your full name"
-            value={guestName}
-            onChange={(e) => setGuestName(e.target.value)}
-          />
-        </div>
+        <form onSubmit={handleSubmit}>
+          {/* Guest name */}
+          <div className="field">
+            <p className="field-label">Guest name</p>
+            <input
+              className="field-input"
+              type="text"
+              placeholder="Name for the wait list"
+              value={guestName}
+              onChange={(e) => setGuestName(e.target.value)}
+            />
+          </div>
 
-        <div className="field">
-          <label className="field-label" htmlFor="party">
-            Party size
-          </label>
-          <p className="field-helper">Number of guests (e.g. 2, 3, 4)</p>
-          <input
-            id="party"
-            className="field-input"
-            placeholder="e.g. 3"
-            value={partySize}
-            onChange={(e) => setPartySize(e.target.value)}
-          />
-        </div>
+          {/* Party size */}
+          <div className="field">
+            <p className="field-label">Party size</p>
+            <input
+              className="field-input"
+              type="number"
+              min="1"
+              max="20"
+              placeholder="Number of guests"
+              value={partySize}
+              onChange={(e) => setPartySize(e.target.value)}
+            />
+          </div>
 
-        <div className="field">
-          <label className="field-label" htmlFor="car">
-            Car information (optional)
-          </label>
-          <p className="field-helper">License plate or car model</p>
-          <input
-            id="car"
-            className="field-input"
-            placeholder="Optional"
-            value={carInfo}
-            onChange={(e) => setCarInfo(e.target.value)}
-          />
-        </div>
+          {/* Car description (optional, trust-friendly) */}
+          <div className="field">
+            <p className="field-label">Car description (optional)</p>
+            <p className="field-helper">
+              Helps the host spot you faster. Example: &quot;blue Honda Civic&quot;.
+              This stays only with the restaurant.
+            </p>
+            <input
+              className="field-input"
+              type="text"
+              placeholder="e.g. blue Honda Civic"
+              value={carInfo}
+              onChange={(e) => setCarInfo(e.target.value)}
+            />
+          </div>
 
-        <button className="btn btn-primary" type="button" onClick={onSubmit}>
-          Submit details
-        </button>
+          <div className="card-actions">
+            <button className="btn btn-primary" type="submit">
+              Continue
+            </button>
+          </div>
+        </form>
       </div>
     </section>
   );
